@@ -1,0 +1,33 @@
+{
+  "name": "CanIVote",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Jeremy0dell/CanIVote.git",
+  "author": "Jeremy Odell <jeremy0dell@yahoo.com>",
+  "license": "GPL-2.0",
+  "scripts": {
+    "start": "nodemon src/server --ignore src/client --ignore src/public",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
+  },
+  "dependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "material-ui": "^0.20.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.0",
+    "selenium-webdriver": "^3.6.0",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2"
+  }
+}
