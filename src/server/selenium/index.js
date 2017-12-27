@@ -6,7 +6,7 @@ const webdriver = require('selenium-webdriver'),
 const router = express.Router()
 
 router.route('/selenium')
-  .post((req, res) => {
+  .post((req, res, next) => {
     const { birthday, firstName, lastName } = req.body
 
     const driver = new webdriver.Builder()
@@ -20,24 +20,23 @@ router.route('/selenium')
     driver.findElement(By.id('queryMonth')).sendKeys(birthday);
     driver.findElement(By.className('voterLookupButton')).click();
 
-    driver.findElements(By.id('messageNoElectionBox'))
-    .then(found => {
-      if(!!found.length) {
-        res.send('couldn\'t find info!')
-        driver.quit()
-      }
-   })
-
     driver.findElements(By.id('voterInformationDIV'))
     .then(found => {
-      if(!!found.length) {
+      if (found.length) {
         const info = driver.findElement(By.css('#voterInformationDIV > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2)'))
-        info.getText().then(data => console.log('data is', data))
-        // console.log('info is', info)
-        // res.send(info)
-        // driver.quit()
+        info.getText()
+        .then(data => {
+          const addr = data.split('\n').slice(1).join(' ')
+          console.log('found', addr)
+          res.send(addr)
+          driver.quit()
+        })
+      } else {
+        res.sendStatus(404)
+        driver.quit()
       }
     })
+    .catch(next)
 
   })
 

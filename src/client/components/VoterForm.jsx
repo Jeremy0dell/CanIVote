@@ -5,15 +5,15 @@ let VoterForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <div>
       <label htmlFor="firstName">First Name</label>
-      <Field name="firstName" component="input" type="text" />
+      <Field name="firstName" component="input" type="text" value="Jeremy"/>
     </div>
     <div>
       <label htmlFor="lastName">Last Name</label>
-      <Field name="lastName" component="input" type="text" />
+      <Field name="lastName" component="input" type="text" value="Odell"/>
     </div>
     <div>
       <label htmlFor="birthday">Birthday</label>
-      <Field name="birthday" component="input" type="text" />
+      <Field name="birthday" component="input" type="text" value="04061994"/>
     </div>
     <button type="submit">Submit</button>
   </form>

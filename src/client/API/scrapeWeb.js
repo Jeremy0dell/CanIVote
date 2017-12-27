@@ -1,19 +1,21 @@
 import axios from 'axios'
+import { push } from 'react-router-redux'
+import { fetchVoterStatus as fetchVoter } from '../actions/voters'
 
 const URL = 'http://localhost:3000/api/selenium'
 
 export const postVoterData = (body) => axios.post(URL, body)
 
-export const getVoterInfo = (formData) => {
+export const fetchVoterStatus = (formData) => {
+  const request = postVoterData(formData)
 
-  // Invert control!
-  // Return a function that accepts `dispatch` so we can dispatch later.
-  // Thunk middleware knows how to turn thunk async actions into actions.
-
-  return function (dispatch) {
-    return fetchSecretSauce().then(
-      sauce => dispatch(makeASandwich(forPerson, sauce)),
-      error => dispatch(apologize('The Sandwich Shop', forPerson, error))
-    );
-  };
+  return (dispatch) => {
+    return request
+    .then(res => dispatch(fetchVoter(res.data)))
+    .then(thing => {
+      console.log('what is thing', thing)
+      dispatch(push('/foobar'))
+    })
+    .catch(err => console.log('err is ', err))
+  }
 }
