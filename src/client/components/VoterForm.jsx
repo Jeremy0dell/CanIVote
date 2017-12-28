@@ -5,15 +5,15 @@ let VoterForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <div>
       <label htmlFor="firstName">First Name</label>
-      <Field name="firstName" component="input" type="text" value="Jeremy"/>
+      <Field name="firstName" component="input" type="text" />
     </div>
     <div>
       <label htmlFor="lastName">Last Name</label>
-      <Field name="lastName" component="input" type="text" value="Odell"/>
+      <Field name="lastName" component="input" type="text" />
     </div>
     <div>
       <label htmlFor="birthday">Birthday</label>
-      <Field name="birthday" component="input" type="text" value="04061994"/>
+      <Field name="birthday" component="input" type="text" />
     </div>
     <button type="submit">Submit</button>
   </form>
@@ -21,7 +21,12 @@ let VoterForm = ({ handleSubmit }) => (
 
 VoterForm = reduxForm({
   // a unique name for the form
-  form: 'voter'
+  form: 'voter',
+  initialValues: {
+    firstName: 'Jeremy',
+    lastName: 'Odell',
+    birthday: '04061994',
+  }
 })(VoterForm)
 
 export default VoterForm

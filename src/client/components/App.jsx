@@ -5,15 +5,13 @@ import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 
 import VoterForm from './VoterForm'
+import Loading from './Loading'
+import ValidateAddress from './ValidateAddress'
 
 import { postVoterData, fetchVoterStatus } from '../API/scrapeWeb'
 
 const App = ({ fetchVoterStatus, changePage }) => {
-  const submit = values => {
-    console.log(values)
-
-    fetchVoterStatus(values)
-  }
+  const submit = values => fetchVoterStatus(values)
 
   return (
     <div>
@@ -24,9 +22,9 @@ const App = ({ fetchVoterStatus, changePage }) => {
       <Route exact path='/' render={() => (
         <VoterForm onSubmit={submit} />
       )}/>
-      {/* <Route path='/customers' component={Customers}/>
-      <Route path='/products' component={Products}/>
-      <Route path='/invoice' component={NewInvoice}/> */}
+      <Route path='/searching' component={Loading}/>
+      <Route path='/confirm' component={ValidateAddress}/>
+      {/* <Route path='/invoice' component={NewInvoice}/> */}
     </div>
   )
 }
