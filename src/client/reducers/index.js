@@ -4,5 +4,15 @@ import { routerReducer } from 'react-router-redux'
 
 import counter from './counter'
 import voters from './voters'
+import district from './district'
+import showAddressForm from './showAddressForm'
 
-export default combineReducers({ counter, voters, form: formReducer, routing: routerReducer })
+
+export default combineReducers({
+  counter,
+  voters, 
+  district,
+  showAddressForm,
+  form: formReducer,
+  routing: routerReducer
+})

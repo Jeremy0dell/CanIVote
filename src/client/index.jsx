@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import store, { history } from './configure-store'
 
