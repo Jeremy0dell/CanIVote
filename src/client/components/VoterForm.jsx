@@ -35,7 +35,8 @@ let VoterForm = ({ handleSubmit }) => (
 
 VoterForm = reduxForm({
   // a unique name for the form
-  form: 'voter'
+  form: 'voter',
+  onSubmit: function(values) { console.log('ehh', values)}
 })(VoterForm)
 
 export default VoterForm

@@ -7,6 +7,7 @@ const router = express.Router()
 
 router.route('/selenium')
   .post((req, res, next) => {
+    console.log('Is this being called?')
     const { birthday, firstName, lastName, month, day, year } = req.body
     // console.log(month, day.padStart(2, "0"), year.padStart(4, "19"), `${month}${day}${year}`)
     const birthdayString = `${month}${day.padStart(2, "0")}${year.padStart(4, "19")}`
